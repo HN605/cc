@@ -42,3 +42,5 @@ gradle/
 logs/
 doc/
 
+.DS_Store
+
