@@ -175,10 +175,6 @@ public class BigFileReader {
         private long sliceSize;
         private byte[] readBuff;
 
-        /**
-         * @param start read position (include)
-         * @param end   the position read to(include)
-         */
         public SliceReaderTask(StartEndPair pair) {
             this.start = pair.start;
             this.sliceSize = pair.end - pair.start + 1;
