@@ -15,6 +15,10 @@ public class FileUtils {
         System.out.println(read(fileName));
     }
 
+    public static void write(String str, String fileName) {
+        write(str, fileName);
+    }
+
     public static void write(String str, String fileName, String charsetName) {
         OutputStreamWriter fileWrite = null;
         try {
@@ -37,25 +41,16 @@ public class FileUtils {
     }
 
     public static String read(String fileName) {
-        return read(fileName, null);
+        return read(fileName, "UTF-8");
     }
 
     public static String read(String fileName, String charsetName) {
-        StringBuffer str = new StringBuffer();
         InputStreamReader fileReader = null;
 
         try {
-            //FileReader f = new FileReader("file");
-            if (charsetName == null) {
-                fileReader = new InputStreamReader(new FileInputStream(fileName));
-            } else {
-                fileReader = new InputStreamReader(new FileInputStream(fileName), charsetName);
-            }
-            /*char[] buf = new char[1024];
-            while (fileReader.read() > 0) {
-                str.append(buf);
-            }*/
+            fileReader = new InputStreamReader(new FileInputStream(fileName), charsetName);
             int len = 0;
+            StringBuffer str = new StringBuffer();
             while( (len = fileReader.read()) > 0) {
                 str.append((char) len);
             }
