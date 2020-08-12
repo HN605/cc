@@ -39,8 +39,8 @@ gradle/
 /gradlew
 /gradlew.bat
 
+### projects ####
 logs/
 doc/
-
 .DS_Store
 

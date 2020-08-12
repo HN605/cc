@@ -11,6 +11,9 @@ plugins {
 description = 'demo'
 
 dependencies {
+
+    compile project(':common')
+
     implementation 'org.springframework.boot:spring-boot-starter:2.2.5.RELEASE'
     implementation 'org.springframework.boot:spring-boot-starter-web:2.2.5.RELEASE'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.2.5.RELEASE'
