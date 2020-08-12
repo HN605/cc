@@ -34,7 +34,7 @@ public class BigFileReader {
             e.printStackTrace();
         }
         this.executorService = Executors.newFixedThreadPool(threadSize);
-        startEndPairs = new HashSet<StartEndPair>();
+        startEndPairs = new HashSet<>();
     }
 
     public void start() {
@@ -47,13 +47,9 @@ public class BigFileReader {
         }
 
         final long startTime = System.currentTimeMillis();
-        cyclicBarrier = new CyclicBarrier(startEndPairs.size(), new Runnable() {
-
-            @Override
-            public void run() {
-                System.out.println("use time: " + (System.currentTimeMillis() - startTime));
-                System.out.println("all line: " + counter.get());
-            }
+        cyclicBarrier = new CyclicBarrier(startEndPairs.size(), () -> {
+            System.out.println("use time: " + (System.currentTimeMillis() - startTime));
+            System.out.println("all line: " + counter.get());
         });
         for (StartEndPair pair : startEndPairs) {
             System.out.println("分配分片：" + pair);
