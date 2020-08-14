@@ -34,14 +34,17 @@ public class FileUtils {
     }
 
     public static String read(String fileName, String charsetName) {
-        InputStreamReader fileReader = null;
+        BufferedReader bufferedReader = null;
 
         try {
-            fileReader = new InputStreamReader(new FileInputStream(fileName), charsetName);
-            int len = 0;
+            bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), charsetName));
             StringBuffer str = new StringBuffer();
-            while( (len = fileReader.read()) > 0) {
-                str.append((char) len);
+            while (true) {
+                String line = bufferedReader.readLine();
+                if (line == null) {
+                    break;
+                }
+                str.append(line);
             }
 
             return str.toString();
@@ -50,8 +53,8 @@ public class FileUtils {
             e.printStackTrace();
         } finally {
             try {
-                if (fileReader != null) {
-                    fileReader.close();
+                if (bufferedReader != null) {
+                    bufferedReader.close();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
