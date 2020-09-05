@@ -1,6 +1,6 @@
 package com.example.demo.execute;
 
-import com.example.demo.comment.ApplicationContextHelper;
+import com.example.demo.commen.ApplicationContextHelper;
 import com.example.demo.service.StatementHandle;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;

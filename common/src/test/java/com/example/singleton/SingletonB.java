@@ -1,4 +1,4 @@
-package com.example.demo.singleton;
+package com.example.singleton;
 
 /**
  * 懒汉式

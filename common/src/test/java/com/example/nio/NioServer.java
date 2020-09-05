@@ -3,10 +3,7 @@ package com.example.nio;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
+import java.nio.channels.*;
 import java.util.Iterator;
 
 public class NioServer {
@@ -25,11 +22,39 @@ public class NioServer {
         // 创建一个缓冲区
         ByteBuffer buffer = ByteBuffer.allocate(100);
 
+        //selector在实现时有bug,epool底层可能会发送一个错误的信号导致select方法提前返回，但没有
+        //返回注册的事件，而且不断循环造成CPU100％
+        int selectZeroCount = 0;
+        int maxZeroCount = 20;
+        int fixed = 0;
+
         while (true) {
-            selector.select(); //阻塞，直到有监听的事件发生
-            Iterator<SelectionKey> keyIter = selector.selectedKeys().iterator();
+            int count = selector.select(); //阻塞，直到有监听的事件发生
+
+            if (count == 0) {
+                selectZeroCount++;
+            } else {
+                //保证是连续的count==0时才将selectZeroCount++,如果其中有一次返回注册事件测已经正常
+                selectZeroCount = 0;
+            }
+
+            if (selectZeroCount > maxZeroCount && fixed == 0) {
+                for (SelectionKey key: selector.keys()) {
+                    if (key.isValid() && key.interestOps() == 0) {
+                        key.cancel();
+                    }
+                }
+                fixed = 1;
+            } else if (selectZeroCount > maxZeroCount && fixed == 1) {
+                //如果已经干预过仍然连续返回0，注意如果不返回0的话selectZeroCount就被置0.
+                //重新获取一个selector,将当前事件重新注册到新的selector上。并销毁当前selector
+                Selector newSelector = Selector.open();
+                changeSelector(selector, newSelector);
+                selector = newSelector;
+            }
 
             // 通过迭代器依次访问select出来的Channel事件
+            Iterator<SelectionKey> keyIter = selector.selectedKeys().iterator();
             while (keyIter.hasNext()) {
                 SelectionKey key = keyIter.next();
 
@@ -75,6 +100,34 @@ public class NioServer {
                 // 已经处理的事件一定要手动移除
                 keyIter.remove();
             }
+        }
+    }
+
+    private static void changeSelector(Selector oldSelector, Selector newSelector) {
+        for (SelectionKey key : oldSelector.keys()) {
+            if (!key.isValid() || key.interestOps() == 0) {
+                continue;
+            }
+            Object att = key.attachment();
+            try {
+                if (att == null) {
+                    key.channel().register(newSelector, key.interestOps());
+                } else {
+                    key.channel().register(newSelector, key.interestOps(), att);
+                }
+            } catch (ClosedChannelException e) {
+                SocketChannel sc = (SocketChannel) key.channel();
+                try {
+                    sc.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        try {
+            oldSelector.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

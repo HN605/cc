@@ -1,4 +1,4 @@
-package com.example.demo.comment;
+package com.example.demo.commen;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

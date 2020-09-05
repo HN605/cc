@@ -1,6 +1,4 @@
-package com.example.demo.singleton;
-
-import java.util.function.DoubleToIntFunction;
+package com.example.singleton;
 
 /**
  * 饿汉式
