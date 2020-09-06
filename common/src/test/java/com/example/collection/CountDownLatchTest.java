@@ -1,4 +1,4 @@
-package com.example.demo.test;
+package com.example.collection;
 
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;

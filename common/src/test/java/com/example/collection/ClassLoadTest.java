@@ -1,4 +1,4 @@
-package com.example.demo.test;
+package com.example.collection;
 
 /**
  * ClassLoadTest
@@ -9,7 +9,7 @@ public class ClassLoadTest {
         ClassLoader classLoader = ClassLoadTest.class.getClassLoader();
 
         System.out.println("before load");
-        Class c = classLoader.loadClass("com.example.demo.test.ClassDemo");
+        Class c = classLoader.loadClass("com.example.collection.ClassDemo");
         System.out.println("after load");
 
         System.out.println("----------------------------------");

@@ -1,4 +1,4 @@
-package com.example.demo.test;
+package com.example.collection;
 
 import com.example.demo.entity.Pizza;
 import com.example.demo.enums.PizzaStatus;
