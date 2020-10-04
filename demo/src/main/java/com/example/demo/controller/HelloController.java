@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+@RequestMapping(value = "/hello")
 public class HelloController {
 
     private Logger logger = LoggerFactory.getLogger(HelloController.class);
