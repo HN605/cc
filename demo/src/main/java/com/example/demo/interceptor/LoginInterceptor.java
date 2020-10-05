@@ -1,6 +1,6 @@
 package com.example.demo.interceptor;
 
-import com.example.demo.user.UserInfo;
+import com.example.demo.entity.UserInfo;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 

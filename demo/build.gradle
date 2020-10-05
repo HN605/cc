@@ -13,9 +13,11 @@ dependencies {
 
     compile project(':common')
 
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.2.5.RELEASE'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis:2.2.5.RELEASE'
     implementation 'io.springfox:springfox-swagger2:3.0.0'//http://localhost:8080/your-app-root/swagger-ui.html
     implementation 'io.springfox:springfox-swagger-ui:2.9.2'
@@ -27,5 +29,7 @@ dependencies {
     implementation 'com.zaxxer:HikariCP:3.4.5'
     implementation 'org.hibernate:hibernate-validator:6.0.17.Final'
 
+    testCompileOnly 'org.projectlombok:lombok:1.18.12'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

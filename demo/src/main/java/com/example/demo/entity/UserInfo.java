@@ -1,4 +1,4 @@
-package com.example.demo.user;
+package com.example.demo.entity;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
