@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Person;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+@Api("hello")
 @RestController
 @RequestMapping(value = "/hello")
 public class HelloController {
@@ -21,6 +24,7 @@ public class HelloController {
         return "hello, my name is chen chuang";
     }
 
+    @ApiOperation("hello")
     @RequestMapping(value = "/person/add", method = RequestMethod.POST)
     public Map<String, Object> addPerson(Person person) {
         logger.info("收到请求，name = " + person.getName() + ", age= " + person.getAge());
