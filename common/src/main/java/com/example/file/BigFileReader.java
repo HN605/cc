@@ -1,13 +1,8 @@
 package com.example.file;
 
-import sun.misc.Cleaner;
-
 import java.io.*;
-import java.lang.reflect.Method;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel.MapMode;
-import java.security.AccessController;
-import java.security.PrivilegedAction;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.CyclicBarrier;
@@ -118,21 +113,21 @@ public class BigFileReader {
 
     /**
      * 内存映射后 clean
-     * @param mappedByteBuffer
+     * @param
      */
-    public void clean(final MappedByteBuffer mappedByteBuffer) {
-        AccessController.doPrivileged((PrivilegedAction<Object>) () -> {
-            try {
-                Method cleanMethod = mappedByteBuffer.getClass().getMethod("clean", new Class[0]);
-                cleanMethod.setAccessible(true);
-                Cleaner cleaner = (Cleaner)cleanMethod.invoke(mappedByteBuffer, new Object[0]);
-                cleaner.clean();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return null;
-        });
-    }
+//    public void clean(final MappedByteBuffer mappedByteBuffer) {
+//        AccessController.doPrivileged((PrivilegedAction<Object>) () -> {
+//            try {
+//                Method cleanMethod = mappedByteBuffer.getClass().getMethod("clean", new Class[0]);
+//                cleanMethod.setAccessible(true);
+//                Cleaner cleaner = (Cleaner)cleanMethod.invoke(mappedByteBuffer, new Object[0]);
+//                cleaner.clean();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            return null;
+//        });
+//    }
 
     private static class StartEndPair {
         public long start;
