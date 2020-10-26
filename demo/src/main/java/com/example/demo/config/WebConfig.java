@@ -17,10 +17,10 @@ public class WebConfig implements WebMvcConfigurer {
 
         registry.addInterceptor(localeChangeInterceptor);
 
-        registry.addInterceptor(new LoginInterceptor())
+       /* registry.addInterceptor(new LoginInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/login")
                 .excludePathPatterns("/loginSys")
-                .excludePathPatterns("/static/**");
+                .excludePathPatterns("/static/**");*/
     }
 }
