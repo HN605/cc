@@ -9,4 +9,5 @@ git remote add origin git@github.com:chenchuang93/cc.git
 git push -u origin master
 
 
-第一次添加到组织
+# 第一次添加到组织
+git remote set-url origin https://github.com/HN605/cc.git
