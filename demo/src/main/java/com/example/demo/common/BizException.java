@@ -4,10 +4,13 @@ import lombok.Data;
 
 @Data
 public class BizException extends RuntimeException{
-    private String code;
     private String msg;
-    public BizException(String code, String msg) {
-        this.code = code;
+
+    public BizException() {
+
+    }
+
+    public BizException(String msg) {
         this.msg = msg;
     }
 }

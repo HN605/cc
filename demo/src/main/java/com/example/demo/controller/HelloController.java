@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.common.BizException;
 import com.example.demo.entity.Person;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,14 +15,15 @@ import java.util.Map;
 
 @Api("hello")
 @RestController
-@RequestMapping(value = "/hello")
+@RequestMapping(value = "/")
 public class HelloController {
 
     private Logger logger = LoggerFactory.getLogger(HelloController.class);
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello(){
-        return "hello, my name is chen chuang";
+        throw new BizException("this is a exception test");
+        //return "hello, my name is chen chuang";
     }
 
     @ApiOperation("hello")

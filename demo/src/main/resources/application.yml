@@ -2,6 +2,11 @@ server:
   port: 9081
 
 spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  messages:
+      basename: static/i18n/messages
   redis:
     host: 127.0.0.1
     database: 0
@@ -13,11 +18,6 @@ spring:
         min-idle: 0
         max-wait: 1ms
     timeout: 1000
-  thymeleaf:
-    prefix: classpath:/templates/
-    suffix: .html
-  messages:
-    basename: static/i18n/messages
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/xxl_job?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
     username: root
@@ -33,4 +33,4 @@ logging:
     max-size: 10MB
     max-history: 7
   level:
-    root: debug
+    root: info
