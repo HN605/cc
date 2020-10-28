@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.User;
-import com.example.demo.util.MessageUtils;
+import com.example.demo.utils.MessageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,7 +15,7 @@ import java.util.Map;
 public class MessageController {
 
     @Autowired
-    private MessageUtils messageUtils;
+    private MessageUtil messageUtils;
 
 
     @PostMapping("/upload")
