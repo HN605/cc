@@ -1,15 +1,6 @@
-
 buildscript {
 
-    ext {
-        springBootVersion = '2.3.5.RELEASE'
-        springBootManagementVersion = '1.0.8.RELEASE'
-        springCloudVersion = 'Hoxton.SR8'
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("io.spring.gradle:dependency-management-plugin:${springBootManagementVersion}")
-    }
+
 }
 
 allprojects {
@@ -20,23 +11,6 @@ allprojects {
 }
 
 subprojects {
-
-    apply plugin: 'java'
-    apply plugin: 'application'
-    apply plugin: 'idea'
-    apply plugin: 'eclipse'
-    apply plugin: 'war'
-    apply plugin: 'org.springframework.boot'
-    apply plugin: 'io.spring.dependency-management'
-
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-    jar {
-        enabled = true
-    }
-    bootJar {
-        classifier = 'boot'
-    }
 
     repositories {
         mavenLocal()
@@ -52,9 +26,5 @@ subprojects {
 
     }
 
-    dependencyManagement {
-        imports { mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}") }
-        imports { mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}" }
-    }
 
 }
