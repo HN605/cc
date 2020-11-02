@@ -1,8 +1,23 @@
+
 buildscript {
-    repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+    ext {
+        set('springCloudVersion', "Hoxton.SR8")
     }
+
+    repositories {
+        mavenLocal()
+        //mavenCentral()
+        maven {
+            ///url = uri('http://repo.maven.apache.org/maven2')
+            url = uri('http://maven.aliyun.com/nexus/content/groups/public/')
+        }
+    }
+
+    /*dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }*/
 }
 
 allprojects {
@@ -18,13 +33,11 @@ allprojects {
             url = uri('http://maven.aliyun.com/nexus/content/groups/public/')
         }
     }
-
 }
 
 subprojects {
-    apply plugin: 'java'
 
-    sourceCompatibility = 1.8
+    //sourceCompatibility = 1.8
 
     dependencies {
 
