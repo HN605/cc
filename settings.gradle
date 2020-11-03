@@ -1,4 +1,3 @@
 rootProject.name = 'cc'
 include 'demo'
-include 'eureka-server'
 
