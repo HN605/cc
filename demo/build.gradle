@@ -6,7 +6,7 @@ plugins {
 
 description = 'demo'
 
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
 
 dependencies {
 
