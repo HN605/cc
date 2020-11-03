@@ -5,6 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @FeignClient("service-01")
 public interface OrderFeign {
-    @GetMapping("/test")
+    @GetMapping("/order/test")
     String test();
 }

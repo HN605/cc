@@ -11,8 +11,8 @@ public class MyController {
     @Autowired
     private OrderFeign orderFeign;
 
-    @GetMapping("/myTest")
-    public String myTest() {
+    @GetMapping("/test")
+    public String test() {
         return orderFeign.test();
     }
 
