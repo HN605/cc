@@ -1,13 +1,10 @@
 eureka:
   client:
     serviceUrl:
-      #      eureka\u7684\u6CE8\u518C\u4E2D\u5FC3\u5730\u5740
       defaultZone: http://localhost:8888/eureka/
 server:
-  #  \u6B64\u9879\u76EE\u7AEF\u53E3\u53F7
   port: 8889
 spring:
   application:
     name: service-01
-#    \u6CE8\u518C\u8FDBeureka\u7684\u540D\u5B57
 
