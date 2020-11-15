@@ -1,10 +1,7 @@
 package com.example.demo.common;
 
-import lombok.Data;
-
 import java.io.Serializable;
 
-@Data
 public class Response implements Serializable {
     private static final long serialVersionUID = -6943502810404495815L;
 
@@ -32,5 +29,19 @@ public class Response implements Serializable {
         return new Response(ERROR, msg);
     }
 
+    public String getCode() {
+        return code;
+    }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
 }

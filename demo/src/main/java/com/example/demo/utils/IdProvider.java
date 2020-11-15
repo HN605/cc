@@ -1,6 +1,5 @@
 package com.example.demo.utils;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.SystemUtils;
@@ -14,7 +13,6 @@ import java.net.Inet4Address;
  */
 
 @Component
-@Slf4j
 public class IdProvider {
 
     private final long twepoch = 1489111610226L;
@@ -53,7 +51,7 @@ public class IdProvider {
      */
     @PostConstruct
     public void init() {
-        log.info("init id component ....................");
+        //log.info("init id component ....................");
         this.workerId = getWorkId();
         this.dataCenterId = getDataCenterId();
     }
@@ -85,7 +83,7 @@ public class IdProvider {
                 | (workerId << workerIdShift)
                 | sequence;
 
-        log.info("id 生成功：" + id);
+        //log.info("id 生成功：" + id);
         return id;
     }
 

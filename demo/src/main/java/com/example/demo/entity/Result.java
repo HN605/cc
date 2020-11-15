@@ -1,10 +1,7 @@
 package com.example.demo.entity;
 
-import lombok.Data;
-
 import java.io.Serializable;
 
-@Data
 public class Result implements Serializable {
     private static final long serialVersionUID = 1170116987346403686L;
     private int code;
