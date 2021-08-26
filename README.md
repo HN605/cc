@@ -14,3 +14,7 @@ git push -u origin master
 git remote set-url origin https://gitee.com/hn605/cc.git
 git remote add github https://github.com/HN605/cc.git
 ````
+
+```
+github.dev
+````
